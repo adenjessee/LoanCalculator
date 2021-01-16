@@ -1,0 +1,132 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/site.css">
+</head>
+
+<body>
+    <header>
+        <div class="p-3 jumbotron-fluid text-center">
+            <h1 class="display-5">Loan Calculator</h1>
+            <p class="lead">Welcome to the Loan Calculator App</p>
+            <p>Enter Your Information Below</p>
+            <!-- <p class="lead">
+                <a target="_blank" class="m-3 btn btn-primary btn-lg" href="https://adenjessee.netlify.app/" role="button">My Portfolio</a>
+                <a target="_blank" class="m-3 btn btn-primary btn-lg" href="https://github.com/adenjessee/SunsetHills" role="button">My Github</a>
+            </p> -->
+        </div>
+    </header>
+    
+    <!-- The Main App UI -->
+    <main class="containter">
+        <div class="card p-3 m-3 shadow">
+
+            <!-- USER INPUT -->
+            <div class="container-fluid">
+                <div class="row">
+
+                    <!-- INPUT FIELDS -->
+                    <div class="col">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <!-- <div class="col col-sm-6 d-none d-sm-flex flex-column">
+                                            <div class="row flex-grow-1">
+                                                <div class="col vertical-center">Loan Amount:</div>
+                                            </div>
+                                            <div class="row flex-grow-1">
+                                                <div class="col vertical-center">Term (Months):</div>
+                                            </div>
+                                            <div class="row flex-grow-1">
+                                                <div class="col vertical-center">Interest Rate:</div>
+                                            </div>
+                                        </div> -->
+                                        <div class="col">
+                                            <div class="row">
+                                                <input placeholder="Loan Amount" maxlength="18" onkeypress="return isNumber(event)" id="input1" type="text" class="m-2 form-control">
+                                            </div>
+                                            <div class="row">
+                                                <input placeholder="Term (Months)" maxlength="18" onkeypress="return isNumber(event)" id="input2" type="text" class="m-2 form-control">
+                                            </div>
+                                            <div class="row">
+                                                <input placeholder="Interest Rate" maxlength="18" onkeypress="return isNumber(event)" id="input3" type="text" class="m-2 form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT OUTPUT FIELD -->
+                    <div class="col">
+                        <div class="card p-3 shadow h-100">
+                            <div class="col text-center">
+                                <div class="row h-25">
+                                    <div class="col text-center">
+                                        <h5>Your Monthly Payments</h5>
+                                    </div>
+                                </div>
+                                <div class="row h-25">
+                                    <div class="col text-center">
+                                        <h5>$----</h5>
+                                    </div>
+                                </div>
+                                <div class="row h-25">
+                                    <div class="col text-center">
+                                        <h5>Your Monthly Payments</h5>
+                                    </div>
+                                </div>
+                                <div class="row h-25">
+                                    <div class="col text-center">
+                                        <h5>Your Monthly Payments</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- BUTTON -->
+            <div class="row">
+                <div class="col m-4 text-center">
+                    <button id="submitButton" class="btn btn-primary shadow-lg">Display Loan Information</button>
+                </div>
+            </div>
+
+            <!-- LOAN INFORMATION CARD -->
+            <div class="card m-3 shadow">
+                <div id="card-body" class="card-body">
+                    <canvas id="myTable"></canvas>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <!-- three.js code -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="js/site.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+</body>
+</html>
