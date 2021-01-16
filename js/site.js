@@ -19,9 +19,9 @@ function principalPayment(monthlyPayment, interestPayment){
 
 function calculateLoanInfo(){
     // Input values
-    let amount_loaned = 25000;//document.getElementById("loan_total").value;
-    let term = 60;//document.getElementById("term").value;
-    let rate = 5;//document.getElementById("rate").value;
+    let amount_loaned = document.getElementById("loan_total").value;
+    let term = document.getElementById("term").value;
+    let rate = document.getElementById("rate").value;
     let monthly = totalMonthlyPayment(amount_loaned, rate, term);
     let = previousBalance = amount_loaned;
     let totalInterest = 0;
@@ -35,7 +35,7 @@ function calculateLoanInfo(){
     totalInterestArray = [];
     balanceArray = [];
 
-    // loop through the months of the loan payments
+    // loop through the months and calculate and store all data
     for(let i = 0; i <= term; i++){
         monthArray.push(i+1);
         paymentArray.push(monthly);
@@ -50,6 +50,7 @@ function calculateLoanInfo(){
         balanceArray.push(balance);
     }
 
+    // print the bottom card table values
     for(let i = 0; i < term; i++){
         console.log(monthArray[i]);
         console.log(paymentArray[i].toFixed(2));
@@ -60,11 +61,7 @@ function calculateLoanInfo(){
         console.log("-----------")
     }
 
-    // Calculate Main Output Values
-    //let monthly = totalMonthlyPayment(amount_loaned, rate, term);
-    //let interest = interestPayment(previousBalance, rate);
-    //let principal = principalPayment(monthly, interest);
-
+    // print the top card table values
     let totaCost = amount_loaned + totalInterest;
     document.getElementById("monthly").innerHTML = monthly.toFixed(2);
     document.getElementById("total_principal").innerHTML = (amount_loaned.toFixed(2));
