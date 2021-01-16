@@ -52,26 +52,31 @@ function calculateLoanInfo(){
 
     // print the bottom card table values
     for(let i = 0; i < term; i++){
-        console.log(monthArray[i]);
-        console.log(paymentArray[i].toFixed(2));
-        console.log(principalArray[i].toFixed(2));
-        console.log(interestArray[i].toFixed(2));
-        console.log(totalInterestArray[i].toFixed(2));
-        console.log(balanceArray[i+1].toFixed(2));
-        console.log("-----------")
+        // console.log(monthArray[i]);
+        // console.log(paymentArray[i].toFixed(2));
+        // console.log(principalArray[i].toFixed(2));
+        // console.log(interestArray[i].toFixed(2));
+        // console.log(totalInterestArray[i].toFixed(2));
+        // console.log(balanceArray[i+1].toFixed(2));
+        // console.log("-----------");
     }
 
-    // print the top card table values
-    let totaCost = amount_loaned + totalInterest;
-    document.getElementById("monthly").innerHTML = monthly.toFixed(2);
-    document.getElementById("total_principal").innerHTML = (amount_loaned.toFixed(2));
-    document.getElementById("total_interest").innerHTML = (totalInterest.toFixed(2));
-    document.getElementById("total_cost").innerHTML = (totaCost.toFixed(2));
+    let shouldContinue = true;
+    if (amount_loaned == null || amount_loaned == "", term == null || term == "", rate == null || rate == "") {
+        alert("Please Fill All Required Fields");
+        shouldContinue = false;
+    }
 
-    // Apply main outputs
-
+    if(shouldContinue){
+        // print the top card table values
+        let totalCost = parseFloat(amount_loaned) + parseFloat(totalInterest);
+        document.getElementById("monthly").innerText = monthly.toFixed(2);
+        document.getElementById("total_principal").innerText = parseFloat(amount_loaned).toFixed(2);
+        document.getElementById("total_interest").innerHTML = parseFloat(totalInterest).toFixed(2);
+        document.getElementById("total_cost").innerHTML = parseFloat(totalCost).toFixed(2);
+    }
 }
 
-
+// apply all laon calculations to cards when button is clicked
 document.getElementById("submitButton").addEventListener("click", calculateLoanInfo);
 

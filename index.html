@@ -38,13 +38,13 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="row">
-                                                <input onkeypress="return isNumberKey(this, event)" placeholder="Loan Amount (Dollars)" maxlength="16" id="loan_total" type="text" class="m-2 form-control">
+                                                <input onkeypress="return isNumberKey(this, event)" placeholder="Loan Amount (Dollars)" maxlength="10" id="loan_total" type="text" class="m-2 form-control">
                                             </div>
                                             <div class="row">
-                                                <input onkeypress="return isNumberKey(this, event)" placeholder="Term (Months)" maxlength="12" id="term" type="text" class="m-2 form-control">
+                                                <input onkeypress="return isNumberKey2(this, event)" placeholder="Term (Months)" maxlength="5" id="term" type="text" class="m-2 form-control">
                                             </div>
                                             <div class="row">
-                                                <input onkeypress="return isNumberKey(this, event)" placeholder="Interest Rate (Percentage)" maxlength="12" id="rate" type="text" class="m-2 form-control">
+                                                <input onkeypress="return isNumberKey(this, event)" placeholder="Interest Rate (Percentage)" maxlength="6" id="rate" type="text" class="m-2 form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -116,6 +116,18 @@
                 else {
                     return false;
                 }
+            } 
+            else {
+                if (charCode > 31 && (charCode < 48 || charCode > 57)){
+                    return false;
+                }
+            }
+            return true;
+        }
+        function isNumberKey2(txt, evt) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode == 46) {
+                return false;
             } 
             else {
                 if (charCode > 31 && (charCode < 48 || charCode > 57)){
