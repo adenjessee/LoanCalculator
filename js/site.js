@@ -167,7 +167,7 @@ function calculateLoanInfo(){
     // print the top card table values
     let totalCost = parseFloat(amount_loaned) + parseFloat(totalInterest);
     document.getElementById("total_principal").innerText = "$"+numberWithCommas(parseFloat(amount_loaned).toFixed(2));
-    document.getElementById("term").innerText = "$"+numberWithCommas(parseFloat(term).toFixed(2));;
+    document.getElementById("term").innerText = numberWithCommas(parseFloat(term).toFixed(2));;
     document.getElementById("rate").innerText = "$"+numberWithCommas(parseFloat(rate).toFixed(2));;
     document.getElementById("total_interest").innerText = "$"+numberWithCommas(parseFloat(totalInterest).toFixed(2));
     document.getElementById("total_cost").innerText = "$"+numberWithCommas(parseFloat(totalCost).toFixed(2));
