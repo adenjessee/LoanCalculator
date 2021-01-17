@@ -162,12 +162,13 @@ function calculateLoanInfo(){
     let labelArray = ["Month", "Payment", "Principal", "Interest", "Total Interest", "Balance"];
 
     //show the chart
-    showCharts(monthArray, arrayFloatSet, labelArray);
+    showCharts(arrayFloatSet);
 
     // print the top card table values
     let totalCost = parseFloat(amount_loaned) + parseFloat(totalInterest);
+    document.getElementById("monthly").innerText = numberWithCommas(parseFloat(monthly).toFixed(2));
     document.getElementById("total_principal").innerText = "$"+numberWithCommas(parseFloat(amount_loaned).toFixed(2));
-    document.getElementById("term").innerText = numberWithCommas(parseFloat(term).toFixed(2));
+    document.getElementById("term").innerText = numberWithCommas(parseFloat(term).toFixed(0))+ " Months";
     document.getElementById("rate").innerText = numberWithCommas(parseFloat(rate).toFixed(2))+"%";
     document.getElementById("total_interest").innerText = "$"+numberWithCommas(parseFloat(totalInterest).toFixed(2));
     document.getElementById("total_cost").innerText = "$"+numberWithCommas(parseFloat(totalCost).toFixed(2));
@@ -205,7 +206,8 @@ function toggleOff(id) {
     x.style.display = "none";
 }
 
-function showCharts(independentVars, dataSet){
+function showCharts(dataSet){
+
     var ctx = document.getElementById('myChart1').getContext('2d');
     if(myChart1 != null){
         myChart1.destroy();
@@ -213,7 +215,7 @@ function showCharts(independentVars, dataSet){
     myChart1 = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: independentVars,
+            labels: dataSet[0],
             datasets: [
                 {
                     label: "Total Interest",
@@ -244,7 +246,7 @@ function showCharts(independentVars, dataSet){
     myChart2 = new Chart(ctx2, {
         type: 'line',
         data: {
-            labels: independentVars,
+            labels: dataSet[0],
             datasets: [
                 {
                     label: "Payment",
@@ -266,7 +268,7 @@ function showCharts(independentVars, dataSet){
     myChart3 = new Chart(ctx3, {
         type: 'line',
         data: {
-            labels: independentVars,
+            labels: dataSet[0],
             datasets: [
                 {
                     label: "Interest",
