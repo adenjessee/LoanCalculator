@@ -41,7 +41,7 @@
                                                 <input onkeypress="return isNumberKey(this, event)" placeholder="Loan Amount (Dollars)" maxlength="10" id="loan_total" type="text" class="m-2 form-control">
                                             </div>
                                             <div class="row">
-                                                <input onkeypress="return isNumberKey2(this, event)" placeholder="Term (Months)" maxlength="5" id="term" type="text" class="m-2 form-control">
+                                                <input onkeypress="return isNumberKey2(this, event)" placeholder="Term (Months)" maxlength="3" id="term" type="text" class="m-2 form-control">
                                             </div>
                                             <div class="row">
                                                 <input onkeypress="return isNumberKey(this, event)" placeholder="Interest Rate (Percentage)" maxlength="6" id="rate" type="text" class="m-2 form-control">
@@ -97,7 +97,9 @@
             <!-- LOAN INFORMATION CARD -->
             <div class="card m-3 shadow">
                 <div id="card-body" class="card-body">
-                    <canvas id="myTable"></canvas>
+                    <table class="table table-striped" id="largeTable">
+
+                    </table>
                 </div>
             </div>
 

@@ -17,6 +17,44 @@ function principalPayment(monthlyPayment, interestPayment){
     return(monthlyPayment - interestPayment * 1.0);
 }
 
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+// loop though a set of arrays in an array to display its table
+function displayLargeTable(arraySet) {
+
+    // large string to append HTML for table
+    let largeString = [];
+
+    // loop through the number of values the user wants
+    for(let i = 0; i < arraySet[0].length-1; i++){
+        largeString += `<tr>`;
+        for(let j = 0; j < arraySet.length; j++){
+            largeString += `<td>${arraySet[j][i]}</td>`;
+        }
+        largeString += `</tr>`;
+    }
+
+    return(largeString);
+}
+
+function displayTableLabel(labelArray){
+
+    // large string to store HTML
+    let largeString = [];
+
+    // loop through table labels and put them in HTML string
+    largeString += `<tr>`;
+    for(let j = 0; j < labelArray.length; j++){
+        largeString += `<td>${labelArray[j]}</td>`;
+    }
+    largeString += `</tr>`;
+
+    return(largeString);
+
+}
+
 function calculateLoanInfo(){
     // Input values
     let amount_loaned = document.getElementById("loan_total").value;
@@ -26,6 +64,12 @@ function calculateLoanInfo(){
     let = previousBalance = amount_loaned;
     let totalInterest = 0;
     let totalPrincipal = 0;
+    let shouldContinue = true;
+
+    if(rate > 100.0){
+        alert("Please Enter A Percentage Rate Less Than 100");
+        shouldContinue = false;
+    }
 
     // monthly values 
     monthArray = [];
@@ -38,30 +82,18 @@ function calculateLoanInfo(){
     // loop through the months and calculate and store all data
     for(let i = 0; i <= term; i++){
         monthArray.push(i+1);
-        paymentArray.push(monthly);
+        paymentArray.push("$"+numberWithCommas(monthly.toFixed(2)));
         let balance = amount_loaned - totalPrincipal;
         let interest = interestPayment(balance, rate);
-        interestArray.push(interest);
+        interestArray.push("$"+numberWithCommas(interest.toFixed(2)));
         let principal = principalPayment(monthly, interest);
         totalPrincipal += principal;
-        principalArray.push(principal);
+        principalArray.push("$"+numberWithCommas(principal.toFixed(2)));
         totalInterest += interest;
-        totalInterestArray.push(totalInterest);
-        balanceArray.push(balance);
+        totalInterestArray.push("$"+numberWithCommas(totalInterest.toFixed(2)));
+        balanceArray.push("$"+numberWithCommas(balance.toFixed(2)));
     }
 
-    // print the bottom card table values
-    for(let i = 0; i < term; i++){
-        // console.log(monthArray[i]);
-        // console.log(paymentArray[i].toFixed(2));
-        // console.log(principalArray[i].toFixed(2));
-        // console.log(interestArray[i].toFixed(2));
-        // console.log(totalInterestArray[i].toFixed(2));
-        // console.log(balanceArray[i+1].toFixed(2));
-        // console.log("-----------");
-    }
-
-    let shouldContinue = true;
     if (amount_loaned == null || amount_loaned == "", term == null || term == "", rate == null || rate == "") {
         alert("Please Fill All Required Fields");
         shouldContinue = false;
@@ -70,10 +102,19 @@ function calculateLoanInfo(){
     if(shouldContinue){
         // print the top card table values
         let totalCost = parseFloat(amount_loaned) + parseFloat(totalInterest);
-        document.getElementById("monthly").innerText = monthly.toFixed(2);
-        document.getElementById("total_principal").innerText = parseFloat(amount_loaned).toFixed(2);
-        document.getElementById("total_interest").innerHTML = parseFloat(totalInterest).toFixed(2);
-        document.getElementById("total_cost").innerHTML = parseFloat(totalCost).toFixed(2);
+        document.getElementById("monthly").innerText = numberWithCommas(monthly.toFixed(2));
+        document.getElementById("total_principal").innerText = "$"+ numberWithCommas(parseFloat(amount_loaned).toFixed(2));
+        document.getElementById("total_interest").innerHTML = "$"+numberWithCommas(parseFloat(totalInterest).toFixed(2));
+        document.getElementById("total_cost").innerHTML = "$"+numberWithCommas(parseFloat(totalCost).toFixed(2));
+
+        let arraySet = [monthArray, paymentArray, principalArray, interestArray, totalInterestArray, balanceArray];
+        let labelArray = ["Month", "Payment", "Principal", "Interest", "Total Interest", "Balance"];
+
+        console.log(displayTableLabel(labelArray));
+
+        document.getElementById("largeTable").innerHTML = displayTableLabel(labelArray);
+
+        document.getElementById("largeTable").innerHTML += displayLargeTable(arraySet);
     }
 }
 
