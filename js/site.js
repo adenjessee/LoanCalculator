@@ -1,5 +1,9 @@
 
 
+var myChart1 = null;
+var myChart2 = null;
+var myChart3 = null;
+
 
 // START LOAN MATH FUNCTIONS ==============================================================
 function totalMonthlyPayment(amount, rate, months){
@@ -139,7 +143,7 @@ function calculateLoanInfo(){
         paymentArray.push("$"+numberWithCommas(monthly.toFixed(2)));
         let balance = amount_loaned - totalPrincipal;
         let interest = interestPayment(balance, rate);
-        interestArray.push(interest);
+        interestFloatArray.push(interest);
         interestArray.push("$"+numberWithCommas(interest.toFixed(2)));
         let principal = principalPayment(monthly, interest);
         totalPrincipal += principal;
@@ -181,12 +185,12 @@ function clearInformation(){
     document.getElementById("rate_input").value = "";
 
     // clear the small table
-    document.getElementById("monthly").innerText = "----"
-    document.getElementById("total_principal").innerText = "----"
-    document.getElementById("term").innerHTML = "----"
-    document.getElementById("rate").innerHTML = "----"
-    document.getElementById("total_interest").innerHTML = "----"
-    document.getElementById("total_cost").innerHTML = "----"
+    document.getElementById("monthly").innerText = "----";
+    document.getElementById("total_principal").innerText = "----";
+    document.getElementById("term").innerHTML = "----";
+    document.getElementById("rate").innerHTML = "----";
+    document.getElementById("total_interest").innerHTML = "----";
+    document.getElementById("total_cost").innerHTML = "----";
 
     // // clear the large table
     document.getElementById("largeTable").innerHTML = "";
@@ -203,7 +207,10 @@ function toggleOff(id) {
 
 function showCharts(independentVars, dataSet){
     var ctx = document.getElementById('myChart1').getContext('2d');
-    var myChart = new Chart(ctx, {
+    if(myChart1 != null){
+        myChart1.destroy();
+    }
+    myChart1 = new Chart(ctx, {
         type: 'line',
         data: {
             labels: independentVars,
@@ -231,7 +238,10 @@ function showCharts(independentVars, dataSet){
         }
     });
     var ctx2 = document.getElementById('myChart2').getContext('2d');
-    var myChart2 = new Chart(ctx2, {
+    if(myChart2 != null){
+        myChart2.destroy();
+    }
+    myChart2 = new Chart(ctx2, {
         type: 'line',
         data: {
             labels: independentVars,
@@ -246,9 +256,21 @@ function showCharts(independentVars, dataSet){
                     borderColor: 'green',
                     data: dataSet[2]
                 },
+            ]
+        },
+    });
+    var ctx3 = document.getElementById('myChart3').getContext('2d');
+    if(myChart3 != null){
+        myChart3.destroy();
+    }
+    myChart3 = new Chart(ctx3, {
+        type: 'line',
+        data: {
+            labels: independentVars,
+            datasets: [
                 {
                     label: "Interest",
-                    borderColor: 'yellow',
+                    borderColor: 'orange',
                     data: dataSet[3]
                 }
             ]
