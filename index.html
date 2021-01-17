@@ -24,27 +24,27 @@
     
     <!-- The Main App UI -->
     <main class="containter">
-        <div class="card p-3 m-3 shadow" >
+        <div class="card p-3 m-4 shadow" >
 
             <!-- USER INPUT -->
             <div class="container" >
-                <div class="row">
+                <div class="row" >
                     
                     <!-- INPUT FIELDS -->
-                    <div class="col mb-3" style="min-width: 300px;">
+                    <div class="col mb-3">
                         <div class="card shadow">
-                            <div class="card-body">
+                            <div class="card-body" style="height:200px;">
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col">
                                             <div class="row">
-                                                <input onkeypress="return isNumberKey(this, event)" placeholder="Loan Amount (Dollars)" maxlength="10" id="loan_total" type="text" class="m-2 form-control">
+                                                <input onkeypress="return isNumberKey(this, event)" placeholder="Loan Amount (Dollars)" maxlength="10" id="loan_input" type="text" class="m-2 form-control">
                                             </div>
                                             <div class="row">
-                                                <input onkeypress="return isNumberKey2(this, event)" placeholder="Term (Months)" maxlength="3" id="term" type="text" class="m-2 form-control">
+                                                <input onkeypress="return isNumberKey2(this, event)" placeholder="Term (Months)" maxlength="3" id="term_input" type="text" class="m-2 form-control">
                                             </div>
                                             <div class="row">
-                                                <input onkeypress="return isNumberKey(this, event)" placeholder="Interest Rate (Percentage)" maxlength="6" id="rate" type="text" class="m-2 form-control">
+                                                <input onkeypress="return isNumberKey(this, event)" placeholder="Interest Rate (Percentage)" maxlength="6" id="rate_input" type="text" class="m-2 form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -54,8 +54,8 @@
                     </div>
 
                     <!-- RIGHT OUTPUT FIELD -->
-                    <div class="col" style="min-width: 300px;">
-                        <div class="card p-3 shadow h-100 ">
+                    <div class="col-lg-8" style="min-width: 300px; height: 202px;">
+                        <div class="card p-3 shadow h-100">
                             <div class="col text-center">
                                 <div class="row h-25">
                                     <div class="col text-center">
@@ -66,7 +66,10 @@
                                     <table class="table text-left">
                                         <thead>
                                         <tr>
+                                            
                                             <th scope="col">Total Principal</th>
+                                            <th scope="col">Term</th>
+                                            <th scope="col">Rate</th>
                                             <th scope="col">Total Interest</th>
                                             <th scope="col">Total Cost</th>
                                         </tr>
@@ -74,6 +77,8 @@
                                         <tbody>
                                         <tr>
                                             <td id="total_principal" >----</td>
+                                            <td id="term" >----</td>
+                                            <td id="rate" >----</td>
                                             <td id="total_interest" >----</td>
                                             <td id="total_cost" >----</td>
                                         </tr>
@@ -89,17 +94,26 @@
 
             <!-- BUTTON -->
             <div class="row">
-                <div class="col m-4 text-center">
-                    <button id="submitButton" class="btn btn-primary shadow-lg">Display Loan Information</button>
+                <div class="col m-4 text-right">
+                    <button id="submitButton" class="btn btn-primary shadow">Display Information</button>
+                </div>
+                <div class="col m-4 ">
+                    <button id="clearButton" class="btn btn-primary shadow">Clear Information</button>
                 </div>
             </div>
 
-            <!-- LOAN INFORMATION CARD -->
-            <div class="card m-3 shadow">
-                <div id="card-body" class="card-body">
-                    <table class="table table-striped" id="largeTable">
+        
 
-                    </table>
+            <!-- LOAN INFORMATION CARD -->
+            <div class="col d-flex justify-content-center">
+                <div id="loanCard" class="card m-4 p-4 shadow" style="max-width: 1200px;">
+                    <canvas id="myChart1" width="800" height="400"></canvas>
+                    <canvas id="myChart2" width="800" height="400"></canvas>
+                    <div id="card-body" class="card-body">
+                        <table class="table table-striped" id="largeTable">
+                            
+                        </table>
+                    </div>
                 </div>
             </div>
 
