@@ -78,7 +78,7 @@ function displayLargeTable(arraySet) {
     let largeString = [];
 
     // loop through the number of values the user wants
-    for(let i = 0; i < arraySet[0].length-1; i++){
+    for(let i = 0; i < arraySet[0].length; i++){
         largeString += `<tr>`;
         for(let j = 0; j < arraySet.length; j++){
             largeString += `<td>${arraySet[j][i]}</td>`;
@@ -186,7 +186,7 @@ function calculateLoanInfo(){
         totalInterest += interest;
         totalInterestFloatArray.push(totalInterest);
         totalInterestArray.push("$"+numberWithCommas(totalInterest.toFixed(2)));
-        balanceFloatArray.push(balance);
+        balanceFloatArray.push(Math.abs(balance));
         balanceArray.push("$"+numberWithCommas(balance.toFixed(2)));
     }
 
