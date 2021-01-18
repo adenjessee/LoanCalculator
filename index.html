@@ -31,59 +31,66 @@
                 <div class="row" >
                     
                     <!-- INPUT FIELDS -->
-                    <div class="col mb-3">
+                    <div class="col mb-5 " >
                         <div class="card shadow">
-                            <div class="card-body" style="height:200px;">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="row">
-                                                <input onkeypress="return isNumberKey(this, event)" placeholder="Loan Amount (Dollars)" maxlength="10" id="loan_input" type="text" class="m-2 form-control">
-                                            </div>
-                                            <div class="row">
-                                                <input onkeypress="return isNumberKey2(this, event)" placeholder="Term (Months)" maxlength="3" id="term_input" type="text" class="m-2 form-control">
-                                            </div>
-                                            <div class="row">
-                                                <input onkeypress="return isNumberKey(this, event)" placeholder="Interest Rate (Percentage)" maxlength="6" id="rate_input" type="text" class="m-2 form-control">
-                                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="form-group row">
+                                        <label for="staticEmail" style="min-width: 130px;" class="col-4 col-form-label">Loan Amount</label>
+                                        <div class="col-sm-8">
+                                            <input onkeypress="return isNumberKey(this, event)" placeholder="(Dollars)" maxlength="10" id="loan_input" type="text" class="form-control">
                                         </div>
                                     </div>
-                                </div>
+                                    <div class="form-group row">
+                                        <label for="staticEmail" style="min-width: 130px;" class="col-sm-4 col-form-label">Term</label>
+                                        <div class="col-sm-8">
+                                            <input onkeypress="return isNumberKey2(this, event)" placeholder="(Months)" maxlength="3" id="term_input" type="text" class=" form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="staticEmail" style="min-width: 130px;" class="col-sm-4 col-form-label">Interest Rate</label>
+                                        <div class="col-sm-8">
+                                            <input onkeypress="return isNumberKey(this, event)" placeholder="(Percentage)" maxlength="6" id="rate_input" type="text" class=" form-control">
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
 
                     <!-- RIGHT OUTPUT FIELD -->
-                    <div class="col-lg-8" style="min-width: 300px; height: 202px;">
-                        <div class="card p-3 shadow h-100">
+                    <div class="col-7 " style="min-width: 300px;">
+                        <div class="card p-3 shadow" style="min-height: 204px;">
                             <div class="col text-center">
-                                <div class="row h-25">
+                                <div class="row h-17">
                                     <div class="col text-center">
                                         <h5>Your Monthly Payments: $<span id="monthly">----</span></h5>
                                     </div>
                                 </div>
-                                <div class="row h-75">
-                                    <table class="table text-left">
-                                        <thead>
-                                        <tr>
-                                            
-                                            <th scope="col">Total Principal</th>
-                                            <th scope="col">Term</th>
-                                            <th scope="col">Rate</th>
-                                            <th scope="col">Total Interest</th>
-                                            <th scope="col">Total Cost</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td id="total_principal" >----</td>
-                                            <td id="term" >----</td>
-                                            <td id="rate" >----</td>
-                                            <td id="total_interest" >----</td>
-                                            <td id="total_cost" >----</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                                <div class="row h-80">
+                                    <div class="table-responsive">
+                                        <table class="table text-left">
+                                            <thead>
+                                            <tr>
+                                                
+                                                <th scope="col">Total Principal</th>
+                                                <th scope="col">Term</th>
+                                                <th scope="col">Rate</th>
+                                                <th scope="col">Total Interest</th>
+                                                <th scope="col">Total Cost</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td id="total_principal" >----</td>
+                                                <td id="term" >----</td>
+                                                <td id="rate" >----</td>
+                                                <td id="total_interest" >----</td>
+                                                <td id="total_cost" >----</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -94,11 +101,18 @@
 
             <!-- BUTTON -->
             <div class="row">
-                <div class="col m-4 text-right">
+
+                <div class="col m-4 text-center">
+
+                </div>
+                <div style="min-width: 230px;"  class="col m-2 text-center flex-wrap">
                     <button id="submitButton" class="btn btn-primary shadow">Display Information</button>
                 </div>
-                <div class="col m-4 ">
+                <div style="min-width: 230px;" class="col m-2 text-center">
                     <button id="clearButton" class="btn btn-primary shadow">Clear Information</button>
+                </div>
+                <div class="col m-4 text-center">
+
                 </div>
             </div>
 
