@@ -5,6 +5,40 @@ var myChart2 = null;
 var myChart3 = null;
 
 
+// fix user input and only allow numbers and one decimal
+function isNumberKey(txt, evt) {
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode == 46) {
+        //Check if the text already contains the . character
+        if (txt.value.indexOf('.') === -1) {
+            return true;
+        } 
+        else {
+            return false;
+        }
+    } 
+    else {
+        if (charCode > 31 && (charCode < 48 || charCode > 57)){
+            return false;
+        }
+    }
+    return true;
+}
+
+// fix user input to allow only numbers and no decimals
+function isNumberKey2(txt, evt) {
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode == 46) {
+        return false;
+    } 
+    else {
+        if (charCode > 31 && (charCode < 48 || charCode > 57)){
+            return false;
+        }
+    }
+    return true;
+}
+
 // START LOAN MATH FUNCTIONS ==============================================================
 function totalMonthlyPayment(amount, rate, months){
     if(rate > 0){   
@@ -62,7 +96,7 @@ function displayTableLabel(labelArray){
     let largeString = [];
 
     // loop through table labels and put them in HTML string
-    largeString += `<tr>`;
+    largeString += `<tr id='custom-row'>`;
     for(let j = 0; j < labelArray.length; j++){
         largeString += `<td>${labelArray[j]}</td>`;
     }
